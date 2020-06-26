@@ -54,7 +54,7 @@ struct ContentView: View {
                      Text("$ \(totalPerPerson, specifier: "%.2f")")
                     // Text(String(format: "$ %.2f", totalPerPerson))
                 }
-            }.navigationBarTitle("WeSplit", displayMode: .inline)
+            }.navigationBarTitle("WeSplit", displayMode: .large)
         }   
     }
 }
