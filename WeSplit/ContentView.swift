@@ -15,6 +15,12 @@ struct ContentView: View {
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
+    var total: Double {
+        var total = Double(checkAmount) ?? 0
+        total += total * Double(tipPercentages[tipPercentage]) / 100
+        return total
+    }
+    
     var totalPerPerson: Double {
         let peopleCount = Double(numberOfPeople + 2)
         let tipSelection = Double(tipPercentages[tipPercentage])
@@ -45,13 +51,15 @@ struct ContentView: View {
                         }
                     }.pickerStyle(SegmentedPickerStyle())
                 }
+                Section(header: Text("Total")) {
+                     Text("$ \(total, specifier: "%.2f")")
+                }
                 Section(header: Text("Total Per Person")) {
                      Text("$ \(totalPerPerson, specifier: "%.2f")")
                     // Text(String(format: "$ %.2f", totalPerPerson))
                 }
             }.navigationBarTitle("WeSplit", displayMode: .inline)
-        }
-        
+        }   
     }
 }
 
